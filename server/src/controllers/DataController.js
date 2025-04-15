@@ -4,10 +4,18 @@
  * @author Robin Pettersson
  */
 
+import { GameAPIService } from '../services/GameAPIService.js'
+
 /**
  * Encapsualates a controller.
  */
 export class DataController {
+  _service
+
+  constructor(service = new GameAPIService()) {
+    this._service = service
+  }
+
   /**
    * Get data.
    *
@@ -15,11 +23,37 @@ export class DataController {
    * @param {object} res - Response object.
    * @param {Function} next - Next middleware function.
    */
-  data (req, res, next) {
-    const year = req.doc
-    console.log(year)
-    res.send(year)
+  async allGameData (req, res, next) {
+    const gameData = await this._service.fetchAllGames()
+
+    if (!gameData) {
+      const error = new Error('No data found')
+      error.status = 404
+      return next(error)
+    }
+
+    res.send(gameData)
   }
+
+    /**
+   * Get data.
+   *
+   * @param {object} req - Request object.
+   * @param {object} res - Response object.
+   * @param {Function} next - Next middleware function.
+   */
+    async yearGameData (req, res, next) {
+      const year = req.doc
+      const gameData = await this._service.fetchGamesByYear(year)
+  
+      if (!gameData) {
+        const error = new Error('No data found')
+        error.status = 404
+        return next(error)
+      }
+  
+      res.send(gameData)
+    }
 
   /**
    * 
