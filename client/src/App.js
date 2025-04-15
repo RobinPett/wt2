@@ -1,25 +1,30 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import Home from './components/navigation/Home.js'
+import Navbar from './components/navigation/Navbar.js'
+import NotFound from './components/info/NotFound.js'
+import { Toaster } from 'sonner'
+import Footer from './components/navigation/Footer.js'
+import ScrollToTop from './components/navigation/ScrollToTop.js'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className="App">
+        <Navbar />
+        <div className="content">
+          <ScrollToTop>
+            <Routes>
+              <Route path='/' element={<Home />}></Route>
+              <Route path='*' element={<NotFound />}></Route>
+            </Routes>
+          </ScrollToTop>
+        </div>
+        <Footer />
+        <Toaster closeButton richColors position='top-center' expand={true} />
+      </div>
+    </Router>
+  )
 }
 
 export default App;
