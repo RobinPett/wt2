@@ -1,10 +1,23 @@
 import express from 'express'
-import { request, gql } from 'graphql-request'
+import { router } from './routes/router.js'
 
 const app = express()
 
-app.get('/', (req, res) => {
-  res.send('Hello World!')
+app.use('/', router)
+
+// Error handling
+app.use((error, req, res, next) => {
+  console.error(error)
+  console.error('Error handler: ')
+  console.error('Caught error message: ' + error.message)
+  console.error(error.status)
+
+  res
+    .status(error.status || 500)
+    .json({
+      status: error.status,
+      message: error.message
+    })
 })
 
 app.listen(process.env.PORT, () => {
