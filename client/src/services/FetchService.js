@@ -32,6 +32,9 @@ export const getGamesOfYear = async (year) => {
         games(release_year: ${year}) {
             title
             release_year
+            genres {
+                name
+            }
         }
     }
 `
