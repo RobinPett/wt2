@@ -2,6 +2,7 @@ import { useEffect, useState, useRef, use } from "react"
 import { fetchUtils } from "../../services"
 import * as echarts from 'echarts'
 import SlideSwitch from "../common/SlideSwitch.js"
+import YearPicker from "../common/YearPicker.js"
 
 /**
  * Displays a specified sound.
@@ -12,7 +13,7 @@ const GameChart = () => {
     const [error, setError] = useState(null)
     const [sort, setSort] = useState(false)
     const chartRef = useRef(null)
-    
+
     // Fetch data
     useEffect(() => {
         const fetchData = async () => {
@@ -41,7 +42,7 @@ const GameChart = () => {
         if (sort) setSort(false)
         else setSort(true)
     }
-    
+
 
     // Initialize chart
     useEffect(() => {
@@ -62,7 +63,7 @@ const GameChart = () => {
             let counts = Array.from(genreMap.values())
 
             if (sort) {
-                ({genres, counts} = sortData(genres, counts))
+                ({ genres, counts } = sortData(genres, counts))
             }
 
             // Chart options
@@ -93,11 +94,14 @@ const GameChart = () => {
             }
         }
     }, [data, year, sort])
-    
+
     return (
         <div className="cc0-view-sound">
             <h1>Game Chart</h1>
-            <SlideSwitch label={'Sort'} onChange={triggerSort}/>
+            <div style={{ padding: '10px' }}>
+                <YearPicker updateYear={setYear} />
+            </div>
+            <SlideSwitch label={'Sort'} onChange={triggerSort} />
             {error && <p className="error">{error}</p>}
             <div ref={chartRef} style={{ width: '100%', height: '400px' }}></div>
         </div>
