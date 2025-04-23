@@ -48,6 +48,9 @@ const GameChart = () => {
     useEffect(() => {
         if (data && chartRef.current) {
             const chart = echarts.init(chartRef.current)
+            chart.on('click', function (params) {
+                console.log(params);
+            })
 
             const genreMap = new Map()
 
