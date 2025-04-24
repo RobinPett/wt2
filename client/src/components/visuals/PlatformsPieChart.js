@@ -1,5 +1,4 @@
 import { useEffect, useRef} from "react"
-import { fetchUtils } from "../../services/index.js"
 import * as echarts from 'echarts'
 
 /**
@@ -7,6 +6,7 @@ import * as echarts from 'echarts'
  */
 const PlatformsPieChart = ({ data }) => {
     const chartRef = useRef(null)
+    const dataLength = data.length
 
     useEffect(() => {
         const platformCounts = data.reduce((accumulator, platformsObject) => {
@@ -43,8 +43,7 @@ const PlatformsPieChart = ({ data }) => {
     return (
         <div className="cc0-view-sound">
             <h1>Platform distribution chart</h1>
-            {/* {error && <p className="error">{error}</p>}
-            {loading && <p>Loading...</p>} */}
+            <h2>Number of games: {dataLength}</h2>
             <div ref={chartRef} style={{ width: '100%', height: '400px' }}></div>
         </div>
     )

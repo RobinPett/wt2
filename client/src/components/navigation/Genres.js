@@ -1,28 +1,41 @@
 import { useEffect, useState } from "react"
 import { fetchUtils } from "../../services/index.js"
-import GameChart from "./GameChart.js"
+import GenreChart from "../visuals/GenreChart.js"
+import Loader from "../info/Loader.js"
+import YearPicker from "../common/YearPicker.js"
+import { toast } from "sonner"
 
 /**
  * Home page.
  */
 const Genres = () => {
     const [genreData, setGenreData] = useState(null)
+    const [year, setYear] = useState(2022)
+    const [loading, setLoading] = useState(false)
 
     useEffect(() => {
         const fetchGenres = async () => {
             try {
-                const data = await fetchUtils.getGamesByGenre()
+                setLoading(true)
+                const data = await fetchUtils.getGameGenres(year)
                 setGenreData(await data)
+                setLoading(false)
             } catch (error) {
                 console.error('Error fetching data:', error)
+                toast.error('Error fetching data')
             }
         }
         fetchGenres()
-    }, [])
+    }, [year])
 
     return (
         <div>
-            {genreData ? <GameChart /> : <p>Loading...</p>}
+            <div style={{ padding: '10px' }}>
+                <YearPicker updateYear={setYear} />
+            </div>
+            <h1 style={{ padding: '10px' }}>Most popular <b>genres</b> in <b>{year}</b></h1>
+            {genreData && <GenreChart data={genreData}/> }
+            {loading && <Loader blur={true} />}
         </div>
     )
 }

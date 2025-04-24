@@ -523,3 +523,7 @@ code {
   box-shadow: 0 0 0 1px #e0e0e0;
   min-width: 100%;
 }
+
+.year-picker {
+  @apply flex flex-col w-3/6 align-middle justify-center m-auto
+}

@@ -4,13 +4,10 @@ import { useNavigate } from "react-router-dom"
  * Home page.
  */
 const Home = () => {
-    const navigate = useNavigate()
-    
     return (
-        <div className="cc0-home">
-            <header>
-            </header>
+        <div className="home">
             <main>
+                <h1>Welcome to the Game Visualizer</h1>
             </main>
         </div>
     )
