@@ -1,10 +1,10 @@
-import { useEffect, useState, useRef } from "react"
+import { useEffect, useRef } from "react"
 import * as echarts from 'echarts'
 
 /**
  * Displays a PlotterChart component.
  */
-const PlotterChart = ({ data, ratings }) => {
+const Heatmap = ({ data, ratings }) => {
     const chartRef = useRef(null)
     const dataLength = data.length
     console.log('PlotterChart data:', data)
@@ -82,4 +82,4 @@ const PlotterChart = ({ data, ratings }) => {
     )
 }
 
-export default PlotterChart
+export default Heatmap

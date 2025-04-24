@@ -2,11 +2,11 @@ import { useEffect, useState } from "react"
 import { fetchUtils } from "../../services/index.js"
 import Loader from "../info/Loader.js"
 import { toast } from "sonner"
-import PlotterChart from "../visuals/PlotterChart.js"
+import Heatmap from "../visuals/Heatmap.js"
 import YearPicker from "../common/YearPicker.js"
 
 /**
- * RatingsVsGenre component fetches and displays a plotter chart comparing game ratings against genres.
+ * RatingsVsGenre component.
  */
 const RatingsVsGenre = () => {
     const [plotterData, setPlotterData] = useState(null)
