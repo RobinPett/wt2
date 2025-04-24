@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react"
-import { fetchUtils } from "../../services"
+import { fetchUtils } from "../../services/index.js"
 import PlatformsPieChart from "../visuals/PlatformsPieChart.js"
 import Loader from "../info/Loader.js"
 import { toast } from "sonner"
