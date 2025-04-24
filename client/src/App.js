@@ -17,7 +17,7 @@ function App() {
         <div className="content">
           <ScrollToTop>
             <Routes>
-              <Route path='/games' element={<GameChart />}></Route>
+              <Route path='/genres' element={<GameChart />}></Route>
               <Route path='/platforms' element={<Platforms />}></Route>
               <Route path='/' element={<Home />}></Route>
               <Route path='*' element={<NotFound />}></Route>

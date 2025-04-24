@@ -1,5 +1,5 @@
 import { useEffect, useState, useRef, use } from "react"
-import { fetchUtils } from "../../services"
+import { fetchUtils } from "../../services/index.js"
 import * as echarts from 'echarts'
 import SlideSwitch from "../common/SlideSwitch.js"
 import YearPicker from "../common/YearPicker.js"

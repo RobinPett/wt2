@@ -4,12 +4,15 @@
 
 import { gql, request } from "graphql-request"
 
+// TODO Create a class
+
 const graphqlFetch = async (query) => {
     try {
         const response = await request(process.env.REACT_APP_BACKEND_URL, query)
         return response.games
     } catch (error) {
         console.error(error)
+        throw error
     }
 }
 
@@ -71,10 +74,10 @@ export const getGamesLimited = async (year, limit, page) => {
     return await graphqlFetch(query)
 }
 
-export const getPlatforms = async () => {
+export const getPlatforms = async (year = 2000) => {
     const query = gql`
     query {
-        games (release_year: 2008) {
+        games (release_year: ${year}) {
             platforms {
                 name
             }

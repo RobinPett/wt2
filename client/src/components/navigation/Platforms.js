@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react"
 import { fetchUtils } from "../../services"
 import PlatformsPieChart from "./PlatformsPieChart.js"
+import { toast } from "sonner"
 
 /**
  * Home page.
@@ -15,6 +16,8 @@ const Platforms = () => {
                 setPlatformData(await data)
             } catch (error) {
                 console.error('Error fetching data:', error)
+                const statusCode = error.response?.status
+                toast.error(`Error fetching data: Status: ${statusCode}`)
             }
         }
         fetchPlatforms()
