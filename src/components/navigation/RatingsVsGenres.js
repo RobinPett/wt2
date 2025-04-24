@@ -89,7 +89,7 @@ const RatingsVsGenre = () => {
             <div className="year-picker" style={{ padding: '10px' }}>
                 <YearPicker updateYear={setYear} />
             </div>
-            {plotterData && ratingObject && <PlotterChart data={plotterData} ratings={ratingObject}/>}
+            {plotterData && ratingObject && <Heatmap data={plotterData} ratings={ratingObject}/>}
             {loading && <Loader blur={true} />}
         </div>
     )
