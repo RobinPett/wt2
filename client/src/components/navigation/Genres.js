@@ -34,7 +34,7 @@ const Genres = () => {
                 <YearPicker updateYear={setYear} />
             </div>
             <h1 style={{ padding: '10px' }}>Most popular <b>genres</b> in <b>{year}</b></h1>
-            {genreData && <GenreChart data={genreData}/> }
+            {genreData && <GenreChart data={genreData.games}/> }
             {loading && <Loader blur={true} />}
         </div>
     )

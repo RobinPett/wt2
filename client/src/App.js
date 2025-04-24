@@ -8,6 +8,7 @@ import Footer from './components/navigation/Footer.js'
 import ScrollToTop from './components/navigation/ScrollToTop.js'
 import Platforms from './components/navigation/Platforms.js'
 import Genres from './components/navigation/Genres.js'
+import RatingsVsGenre from './components/navigation/RatingsVsGenres.js';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             <Routes>
               <Route path='/genres' element={<Genres />}></Route>
               <Route path='/platforms' element={<Platforms />}></Route>
+              <Route path='/ratings-vs-genres' element={<RatingsVsGenre />}></Route>
               <Route path='/' element={<Home />}></Route>
               <Route path='*' element={<NotFound />}></Route>
             </Routes>

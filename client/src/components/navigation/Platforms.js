@@ -34,7 +34,7 @@ const Platforms = () => {
             <div className="year-picker" style={{ padding: '10px' }}>
                 <YearPicker  updateYear={setYear} />
             </div>
-            {platformData && <PlatformsPieChart data={platformData} />}
+            {platformData && <PlatformsPieChart data={platformData.games} />}
             {loading && <Loader blur={true} />}
         </div>
     )
