@@ -6,12 +6,12 @@ import PlotterChart from "../visuals/PlotterChart.js"
 import YearPicker from "../common/YearPicker.js"
 
 /**
- * Home page.
+ * RatingsVsGenre component fetches and displays a plotter chart comparing game ratings against genres.
  */
 const RatingsVsGenre = () => {
     const [plotterData, setPlotterData] = useState(null)
     const [loading, setLoading] = useState(false)
-    const [year, setYear] = useState(2022)
+    const [year, setYear] = useState(1985)
 
     useEffect(() => {
         const createPlotterData = async () => {
@@ -19,12 +19,18 @@ const RatingsVsGenre = () => {
                 setLoading(true)
                 const ratingObject = await fetchRating()
                 const genreData = await fetchGenres(year)
-                const plotterData = genreData.games.flatMap(game => {
-                    game.genres.map(genre => ({
-                        genre,
-                        rating: ratingObject[game.rating]
-                    }))
-                })
+                console.log('Rating Object:', ratingObject)
+
+                const plotterData = genreData.games.flatMap(game => 
+                    game.genres.map(genre => {
+                        const ratingKey = Object.keys(ratingObject).find(key => ratingObject[key] === game.rating)
+                        return {
+                            genre,
+                            rating: ratingKey || Object.keys(ratingObject).length, // Fallback - Last rating = Rating pending
+                        }
+                    })
+                )
+
                 setPlotterData(plotterData)
                 setLoading(false)
             }
@@ -50,7 +56,7 @@ const RatingsVsGenre = () => {
     const convertToObject = (ratings) => {
         const ratingObject = {}
         ratings.forEach((rating, index) => {
-            ratingObject[index] = rating.text
+            ratingObject[index + 1] = rating.text
         })
         return ratingObject
     }
