@@ -8,7 +8,7 @@ export default function YearPicker({ updateYear }) {
   const maxDate = dayjs(new Date(2022, 11, 31))
   return (
     <div className="year-picker" style={{ padding: '10px' }}>
-      <h1>Pick a year</h1>
+      <h1 className='mb-3'>Pick a year</h1>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <YearCalendar minDate={minDate} maxDate={maxDate} disableFuture onChange={(value) => updateYear(value.year())} />
       </LocalizationProvider>

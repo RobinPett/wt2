@@ -83,8 +83,7 @@ const GenreChart = ({ data, year }) => {
   }, [sort, data])
 
   return (
-    <div className="cc0-view-sound">
-      <h1>Game Chart</h1>
+    <div className="view-graph">
       <SlideSwitch label={'Sort'} onChange={triggerSort} />
       <div ref={chartRef} style={{ width: '100%', height: '400px' }}></div>
       {clickedGenre && <ListGames genre={clickedGenre} year={year} />}

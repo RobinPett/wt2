@@ -78,7 +78,7 @@ const Heatmap = ({ data, ratings }) => {
 
   // Render chart
   return (
-    <div className="cc0-view-sound">
+    <div className="view-graph">
       <h1>Genre vs Rating</h1>
       <h2>Datapoints: {datapoints}</h2>
       <div ref={chartRef} style={{ width: '100%', height: '400px' }}></div>

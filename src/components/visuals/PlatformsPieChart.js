@@ -44,7 +44,7 @@ const PlatformsPieChart = ({ data }) => {
   }
 
   return (
-    <div className="cc0-view-sound">
+    <div className="view-graph">
       <h1>Platform distribution chart</h1>
       <h2>Number of games: {dataLength}</h2>
       <div ref={chartRef} style={{ width: '100%', height: '400px' }}></div>
