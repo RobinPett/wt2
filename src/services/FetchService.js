@@ -43,26 +43,11 @@ export const getGameGenres = async (year) => {
     return await graphqlFetch(query)
 }
 
-
-export const getGamesOfYear = async (year) => {
+export const getGamesByYearAndGenre = async (year, genre, limit, page) => {
     const query = gql`
     query {
-        games(release_year: ${year}) {
-            title
-            release_year
-            genres {
-                name
-            }
-        }
-    }
-`
-    return await graphqlFetch(query)
-}
-
-export const getGamesLimited = async (year, limit, page) => {
-    const query = gql`
-    query {
-        games(release_year: ${year}, limit: ${limit}, page: ${page}) {
+        games(release_year: ${year}, genre: "${genre}", limit: ${limit}, page: ${page}) {
+            id
             title
             release_year
             genres {

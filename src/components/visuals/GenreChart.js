@@ -1,12 +1,15 @@
 import { useEffect, useState, useRef } from "react"
 import * as echarts from 'echarts'
 import SlideSwitch from "../common/SlideSwitch.js"
+import ListGames from "./ListGames.js"
+import { fetchUtils } from "../../services/index.js"
 
 /**
  * Displays a GenreChart component.
  */
-const GenreChart = ({ data }) => {
+const GenreChart = ({ data, year }) => {
     const [sort, setSort] = useState(false)
+    const [clickedGenre, setClickedGenre] = useState(null)
     const chartRef = useRef(null)
 
     const sortData = (genres, counts) => {
@@ -30,7 +33,8 @@ const GenreChart = ({ data }) => {
         if (data && chartRef.current) {
             const chart = echarts.init(chartRef.current)
             chart.on('click', function (params) {
-                console.log(params);
+                const genre = params.name
+                setClickedGenre(genre)
             })
 
             const genreMap = new Map()
@@ -80,8 +84,10 @@ const GenreChart = ({ data }) => {
             <h1>Game Chart</h1>
             <SlideSwitch label={'Sort'} onChange={triggerSort} />
             <div ref={chartRef} style={{ width: '100%', height: '400px' }}></div>
+            {clickedGenre && <ListGames genre={clickedGenre} year={year} />}
         </div>
     )
+
 }
 
 export default GenreChart
