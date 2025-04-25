@@ -449,6 +449,11 @@ input[type=range]::-ms-track {
   .cc0-privacy-policy {
     @apply p-5 max-w-3xl m-auto leading-7
   }
+
+  /* Table */
+  .table {
+    @apply flex flex-col m-auto w-3/5 justify-center items-center
+  }
 }
 
 test {

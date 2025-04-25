@@ -6,27 +6,28 @@ import YearPicker from "../common/YearPicker.js"
 import { toast } from "sonner"
 
 /**
- * Home page.
+ * View genres component.
  */
 const Genres = () => {
     const [genreData, setGenreData] = useState(null)
-    const [year, setYear] = useState(2022)
+    const [year, setYear] = useState(2000)
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {
-        const fetchGenres = async () => {
-            try {
-                setLoading(true)
-                const data = await fetchUtils.getGameGenres(year)
-                setGenreData(await data)
-                setLoading(false)
-            } catch (error) {
-                console.error('Error fetching data:', error)
-                toast.error('Error fetching data')
-            }
-        }
         fetchGenres()
     }, [year])
+
+    const fetchGenres = async () => {
+        try {
+            setLoading(true)
+            const data = await fetchUtils.getGameGenres(year)
+            setGenreData(await data)
+            setLoading(false)
+        } catch (error) {
+            console.error('Error fetching data:', error)
+            toast.error('Error fetching data')
+        }
+    }
 
     return (
         <div>

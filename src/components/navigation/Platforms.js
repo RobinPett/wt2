@@ -10,7 +10,7 @@ import YearPicker from "../common/YearPicker.js"
  */
 const Platforms = () => {
     const [platformData, setPlatformData] = useState(null)
-    const [year, setYear] = useState(2022)
+    const [year, setYear] = useState(2000)
     const [loading, setLoading] = useState(false)
 
     useEffect(() => {

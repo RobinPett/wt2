@@ -53,7 +53,8 @@ export const getGamesByYearAndGenre = async (year, genre, limit, page) => {
             genres {
                 name
             }
-        }
+        },
+        totalGames(release_year: ${year}, genre: "${genre}")
     }
 `
     return await graphqlFetch(query)

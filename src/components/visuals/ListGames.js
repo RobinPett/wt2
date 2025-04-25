@@ -13,6 +13,7 @@ const ListGames = ({ genre, year }) => {
     const [games, setGames] = useState([])
     const [pageSize, setPageSize] = useState(5)
     const [page, setPage] = useState(1)
+    const [totalGames, setTotalGames] = useState(0)
     const [loading, setLoading] = useState(false)
 
     const columns = [
@@ -27,19 +28,21 @@ const ListGames = ({ genre, year }) => {
     ]
 
     useEffect(() => {
-        const fetchGames = async () => {
-            try {
-                setLoading(true)
-                const data = await fetchUtils.getGamesByYearAndGenre(year, genre, pageSize, page)
-                setGames(data.games)
-                setLoading(false)
-            } catch (error) {
-                console.error('Error fetching data:', error)
-                toast.error('Error fetching data')
-            }
-        }
         fetchGames()
     }, [page, pageSize, genre, year])
+
+    const fetchGames = async () => {
+        try {
+            setLoading(true)
+            const data = await fetchUtils.getGamesByYearAndGenre(year, genre, pageSize, page)
+            setGames(data.games)
+            setTotalGames(data.totalGames)
+            setLoading(false)
+        } catch (error) {
+            console.error('Error fetching data:', error)
+            toast.error('Error fetching data')
+        }
+    }
 
     return (
         <div>
@@ -47,21 +50,33 @@ const ListGames = ({ genre, year }) => {
                 <h1 style={{ padding: '10px' }}>List of <b>{genre}</b> games in <b>{year}</b></h1>
                 {loading && <Loader blur={true} />}
             </div>
-            <Paper sx={{ height: 400, width: '100%' }}>
-                <DataGrid
-                    rows={games}
-                    columns={columns}
-                    pagination
-                    paginationMode="server"
-                    pageSize={pageSize}
-                    onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
-                    onPageChange={(newPage) => setPage(newPage)}
-                    pageSizeOptions={[5, 10]}
-                    sx={{ border: 0 }}
-                />
-            </Paper>
+
+            <div className="table">
+                <h2 style={{ padding: '10px' }}>Total games: <b>{totalGames}</b></h2>
+                <Paper sx={{ height: 400, width: '100%' }}>
+                    <DataGrid
+                        rows={games}
+                        columns={columns}
+                        rowCount={totalGames}
+                        pagination
+                        paginationMode="server"
+                        pageSize={pageSize}
+                        onPageSizeChange={(newPageSize) => setPageSize(newPageSize)}
+                        onPageChange={(newPage) => setPage(newPage)}
+                        pageSizeOptions={[5, 10]}
+                        paginationModel={{ page: page - 1, pageSize: pageSize }} // -1 for 0-based index
+                        onPaginationModelChange={(model) => {
+                            const newPage = Math.max(model.page + 1) // +1 for 1-based index
+                            setPage(newPage)
+                            setPageSize(model.pageSize)
+                        }}
+                        sx={{ border: 0 }}
+                    />
+                </Paper>
+            </div>
+
         </div>
-    );
+    )
 }
 
 export default ListGames

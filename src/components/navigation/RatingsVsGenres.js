@@ -12,7 +12,7 @@ const RatingsVsGenre = () => {
     const [plotterData, setPlotterData] = useState(null)
     const [ratingObject, setRatingObject] = useState(null)
     const [loading, setLoading] = useState(false)
-    const [year, setYear] = useState(2020)
+    const [year, setYear] = useState(2000)
 
     useEffect(() => {
         const createPlotterData = async () => {
