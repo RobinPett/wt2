@@ -7,6 +7,7 @@ import * as echarts from 'echarts'
 const Heatmap = ({ data, ratings }) => {
     const chartRef = useRef(null)
     const datapoints = data.length
+    const sortedRatings = [...new Set(data.map(item => item.rating))].sort((a, b) => a - b)
 
     useEffect(() => {
         setChartOptions()
@@ -31,7 +32,7 @@ const Heatmap = ({ data, ratings }) => {
             },
             yAxis: {
                 type: 'category',
-                data: [...new Set(data.map(item => item.rating))],
+                data: sortedRatings,
                 axisLabel: {
                     formatter: value => {
                         return ratings[value] || `Rating ${value}`
