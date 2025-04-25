@@ -99,70 +99,34 @@
 
   /* Navigation */
 
-  .cc0-navbar {
+  .navbar {
     @apply flex flex-nowrap row-auto justify-around p-4
-  }
-
-  .cc0-profile-list {
-    @apply w-full
-  }
-
-  .cc0-account-links {
-    @apply flex flex-row items-center
-  }
-
-  .cc0-profile-manager {
-    @apply w-min
-  }
-
-  /* .cc0-link {
-    @apply m-4 p-2 rounded hover:bg-gray-100 text-sm transition duration-75
-  } */
-
-  /* .cc0-link-active {
-    @apply m-4 p-2 rounded bg-gray-100 text-sm underline
-  } */
-
-  .cc0-sound-link {
-    @apply m-4 p-2 rounded bg-red-500 text-white hover:bg-gray-900 text-sm transition duration-75
-  }
-
-  .cc0-categories-grid {
-    @apply grid grid-cols-4 gap-4 w-full m-auto
-  }
-
-  .cc0-categories {
-    @apply flex min-w-full bg-gray-50 text-gray-900 border-gray-100 border-solid border-2 justify-between p-4 m-1 ml-2 mr-2 text-2xl shadow-md font-semibold hover:outline-black hover:outline hover:bg-gray-300 hover:border-none hover:scale-105 h-auto rounded-md cursor-pointer transition-all duration-75 overflow-hidden
-  }
-
-  .cc0-preview-player {
-    @apply w-full m-2 flex-grow
   }
 
   /* Home */
 
-  .cc0-home {
+  .home {
     @apply w-full h-full
   }
 
-  .cc0-home-hero {
-    @apply justify-around w-7/12 h-2/4 m-auto p-32 shadow-xl rounded-3xl bg-[url('./img/Waveformv3.svg')] bg-cover bg-opacity-0 overflow-hidden
+  .home-hero {
+    @apply justify-around w-5/6 h-2/4 m-auto p-32 shadow-xl rounded-3xl bg-cover bg-opacity-0 overflow-hidden
   }
 
-  .cc0-hero-text {
-    @apply font-black text-8xl text-left text-wrap
+  .hero-text {
+    @apply font-black text-8xl text-center text-wrap
   }
 
-  .cc0-hero-text::first-letter {
+  .hero-text-container {
+    @apply mb-10
+  }
+
+  .hero-text::first-letter {
     @apply text-red-500
   }
 
-  .cc0-hero-buttons {
-    @apply mt-10
-  }
-
-  .cc0-home-latest {
-    @apply mt-16
+  .dataset-attributes {
+    @apply flex flex-col w-max m-auto font-semibold list-disc text-left mt-3 mb-3
   }
 
 
@@ -478,7 +442,7 @@ code {
 }
 
 /* Navbar */
-.cc0-navbarbackup {
+.navbarbackup {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
