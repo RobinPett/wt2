@@ -11,8 +11,6 @@ const Navbar = () => {
                 <NavLink exact activeClassName='cc0-link-active' className='cc0-link' to='/genres'>Genres</NavLink>
                 <NavLink exact activeClassName='cc0-link-active' className='cc0-link' to='/platforms'>Platforms</NavLink>
                 <NavLink exact activeClassName='cc0-link-active' className='cc0-link' to='/ratings-vs-genres'>Ratings vs Genres</NavLink>
-                {/* <NavLink exact activeClassName='cc0-link-active' className='cc0-link' to='/sounds'>Sounds</NavLink>
-                <NavLink exact activeClassName='cc0-link-active' className='cc0-link' to='/about'>About</NavLink> */}
             </div>
         </nav> 
     )

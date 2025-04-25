@@ -12,7 +12,7 @@ const RatingsVsGenre = () => {
     const [plotterData, setPlotterData] = useState(null)
     const [ratingObject, setRatingObject] = useState(null)
     const [loading, setLoading] = useState(false)
-    const [year, setYear] = useState(2000)
+    const [year, setYear] = useState(2020)
 
     useEffect(() => {
         const createPlotterData = async () => {
@@ -89,6 +89,7 @@ const RatingsVsGenre = () => {
             <div className="year-picker" style={{ padding: '10px' }}>
                 <YearPicker updateYear={setYear} />
             </div>
+            <h1 style={{ padding: '10px' }}>Comparing <b>genres</b> and  <b>ratings</b> of <b>{year}</b></h1>
             {plotterData && ratingObject && <Heatmap data={plotterData} ratings={ratingObject}/>}
             {loading && <Loader blur={true} />}
         </div>
