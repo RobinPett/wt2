@@ -18,7 +18,8 @@ const ListGames = ({ genre, year }) => {
   const [page, setPage] = useState(1)
   const [totalGames, setTotalGames] = useState(0)
   const [loading, setLoading] = useState(false)
-
+  
+  // Columns for the DataGrid
   const columns = [
     { field: 'id', headerName: 'ID', width: 150 },
     { field: 'title', headerName: 'Title', width: 300 },
@@ -34,6 +35,9 @@ const ListGames = ({ genre, year }) => {
     fetchGames()
   }, [page, pageSize, genre, year])
 
+  /**
+   * Fetches games by year and genre.
+   */
   const fetchGames = async () => {
     try {
       setLoading(true)

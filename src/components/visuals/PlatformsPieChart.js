@@ -11,6 +11,7 @@ const PlatformsPieChart = ({ data }) => {
   const chartRef = useRef(null)
   const dataLength = data.length
 
+  // Initialize chart
   useEffect(() => {
     const platformCounts = data.reduce((accumulator, platformsObject) => {
       // Check for multiple platforms
@@ -30,6 +31,7 @@ const PlatformsPieChart = ({ data }) => {
     setChartOptions(platformCounts)
   }, [data])
 
+  // Set chart options and initialize the chart
   const setChartOptions = (data) => {
     const chart = echarts.init(chartRef.current)
     const option = {

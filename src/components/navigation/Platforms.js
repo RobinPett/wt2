@@ -15,6 +15,7 @@ const Platforms = () => {
   const [year, setYear] = useState(2000)
   const [loading, setLoading] = useState(false)
 
+  // Fetch data when year changes
   useEffect(() => {
     const fetchPlatforms = async () => {
       try {

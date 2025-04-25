@@ -19,6 +19,9 @@ const Genres = () => {
     fetchGenres()
   }, [year])
 
+  /**
+   * Fetches genres by year.
+   */
   const fetchGenres = async () => {
     try {
       setLoading(true)

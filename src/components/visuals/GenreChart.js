@@ -15,6 +15,13 @@ const GenreChart = ({ data, year }) => {
   const [clickedGenre, setClickedGenre] = useState(null)
   const chartRef = useRef(null)
 
+  /**
+   * Sorts the data based on the counts of genres.
+   *
+   * @param {*} genres 
+   * @param {*} counts 
+   * @returns 
+   */
   const sortData = (genres, counts) => {
     const combined = genres.map((genre, index) => ({ genre, count: counts[index] }))
     combined.sort((a, b) => b.count - a.count)
@@ -25,6 +32,7 @@ const GenreChart = ({ data, year }) => {
     }
   }
 
+  // Sort when switch is clicked
   const triggerSort = () => {
     if (sort) {setSort(false)}
     else {setSort(true)}
@@ -89,7 +97,6 @@ const GenreChart = ({ data, year }) => {
       {clickedGenre && <ListGames genre={clickedGenre} year={year} />}
     </div>
   )
-
 }
 
 export default GenreChart

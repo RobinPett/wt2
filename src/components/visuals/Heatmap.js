@@ -17,6 +17,9 @@ const Heatmap = ({ data, ratings }) => {
     setChartOptions()
   }, [data])
 
+  /**
+   * Sets the chart options and initializes the chart.
+   */
   const setChartOptions = () => {
     const chart = echarts.init(chartRef.current)
     const option = {

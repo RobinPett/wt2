@@ -16,6 +16,7 @@ const RatingsVsGenre = () => {
   const [loading, setLoading] = useState(false)
   const [year, setYear] = useState(2000)
 
+  // Fetch data when year changes
   useEffect(() => {
     const createPlotterData = async () => {
       try {
@@ -49,6 +50,7 @@ const RatingsVsGenre = () => {
     createPlotterData()
   }, [year])
 
+  // Fetch ratings from API
   const fetchRating = async () => {
     const data = await fetchUtils.getRatings()
     const ratings = data.ratings
@@ -56,10 +58,12 @@ const RatingsVsGenre = () => {
     return ratingObject
   }
 
+  // Fetch genres from API
   const fetchGenres = async (year) => {
     return await fetchUtils.getGenresAndRatings(year)
   }
 
+  // Convert ratings to object
   const convertToObject = (ratings) => {
     const ratingObject = {}
     ratings.forEach((rating, index) => {
@@ -68,6 +72,7 @@ const RatingsVsGenre = () => {
     return ratingObject
   }
 
+  // Process data to calculate frequencies
   const processData = (data) => {
     const frequencies = {}
     data.forEach(item => {
