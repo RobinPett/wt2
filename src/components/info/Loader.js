@@ -1,7 +1,8 @@
-import React from "react"
-
 /**
  * Displays when something loads.
+ * 
+ * @param {boolean} blur - Whether to blur the background or not.
+ * @returns {JSX.Element} - The Loader component.
  */
 const Loader = ({blur}) => {
   return (
